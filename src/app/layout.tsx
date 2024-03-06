@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={cn(
           poppins.className,
-          "min-h-screen w-full max-w-[1500px] mx-auto py-8 bg-white text-dark"
+          "min-h-screen w-full max-w-[1500px] mx-auto p-8 bg-white text-dark"
         )}
       >
         <Navbar />

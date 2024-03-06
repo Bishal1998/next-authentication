@@ -1,10 +1,11 @@
+import Slider from "@/components/Carousel";
 import React from "react";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex justify-between items-center my-8">
+    <div className="w-full flex flex-col lg:flex-row justify-between items-center my-8 gap-20">
       {children}
-      <div>Hello World</div>
+      <Slider />
     </div>
   );
 };

@@ -3,8 +3,8 @@ import { Button } from "./ui/button";
 
 const Social = () => {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <Button variant={"outline"} size={"icon"} className="px-16 py-6">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <Button variant={"outline"} size={"icon"} className="py-6 w-full">
         <div>
           <svg
             width="24"
@@ -20,7 +20,7 @@ const Social = () => {
           </svg>
         </div>
       </Button>
-      <Button variant={"outline"} size={"icon"} className="px-16 py-6">
+      <Button variant={"outline"} size={"icon"} className="py-6 w-full">
         <div>
           <svg
             width="24"
@@ -48,7 +48,7 @@ const Social = () => {
           </svg>
         </div>
       </Button>
-      <Button variant={"outline"} size={"icon"} className="px-16 py-6">
+      <Button variant={"outline"} size={"icon"} className="py-6 w-full">
         <div>
           <svg
             width="24"

@@ -12,11 +12,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import Header from "@/components/Header";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import Social from "@/components/Social";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 interface ILoginForm {
   email: string;
@@ -40,6 +41,7 @@ const loginSchema = z.object({
       } */
 const Login = () => {
   const [isPending, startTransition] = useTransition();
+  const [passActive, setPassActive] = useState(false);
 
   const loginForm = useForm<ILoginForm>({
     resolver: zodResolver(loginSchema),
@@ -56,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <section className="w-1/3">
+    <section className="w-full lg:w-1/2">
       <Header
         title="Login"
         subtitle="Login to access your travelwise account"
@@ -87,13 +89,30 @@ const Login = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input
-                    placeholder="***********"
-                    type="password"
-                    {...field}
-                    disabled={isPending}
-                    className="py-6"
-                  />
+                  <div className="relative">
+                    <Input
+                      placeholder="***********"
+                      type={passActive ? "text" : "password"}
+                      {...field}
+                      disabled={isPending}
+                      className="py-6"
+                    />
+                    <div className="absolute right-4 bottom-4">
+                      {passActive ? (
+                        <FaRegEye
+                          size={20}
+                          className="cursor-pointer"
+                          onClick={() => setPassActive(!passActive)}
+                        />
+                      ) : (
+                        <FaRegEyeSlash
+                          size={20}
+                          className="cursor-pointer"
+                          onClick={() => setPassActive(!passActive)}
+                        />
+                      )}
+                    </div>
+                  </div>
                 </FormControl>
                 <FormMessage className="text-red-400" />
               </FormItem>
