@@ -14,10 +14,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTransition } from "react";
 import Header from "@/components/Header";
+import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 
 interface ILoginForm {
   email: string;
   password: string;
+  remember: boolean;
 }
 
 const loginSchema = z.object({
@@ -25,6 +28,7 @@ const loginSchema = z.object({
   password: z
     .string()
     .min(8, { message: "Password must be at least 8 characters long" }),
+  remember: z.boolean().default(false).optional(),
 });
 /* { message: "Password must be at least 8 characters long" })
     .regex(
@@ -41,6 +45,7 @@ const Login = () => {
     defaultValues: {
       email: "",
       password: "",
+      remember: false,
     },
   });
   const onSubmit = (data: ILoginForm) => {
@@ -93,6 +98,29 @@ const Login = () => {
               </FormItem>
             )}
           />
+          <div className="flex gap-2 items-center justify-between space-y-2">
+            <div className="flex items-center gap-2">
+              <FormField
+                control={loginForm.control}
+                name="remember"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        disabled={isPending}
+                        className="bg-[#515def] text-white text-xs"
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+              <p className="text-gray-600">Remember Me</p>
+            </div>
+            <p className="text-red-600 cursor-pointer">Forgot Password?</p>
+          </div>
           <Button
             type="submit"
             className="bg-[#515def] text-white w-full py-6"
@@ -102,6 +130,19 @@ const Login = () => {
           </Button>
         </form>
       </Form>
+      <p className="text-center py-4">
+        Don't have an account?{" "}
+        <Link href={"/register"} className="text-red-400">
+          Sign up
+        </Link>
+      </p>
+      <div className="flex items-center w-full">
+        <hr className="w-1/2" />
+        <p className="text-base text-gray-400 whitespace-nowrap px-4">
+          Or Login with
+        </p>
+        <hr className="w-1/2" />
+      </div>
     </section>
   );
 };
