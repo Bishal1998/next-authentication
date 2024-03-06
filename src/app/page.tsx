@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
+import AuthLayout from "@/app/auth/authLayout";
+import Login from "@/app/auth/login/Login";
 
 function Home() {
   return (
-    <div>
-      Home
-      <Button className="bg-orange-500 text-white text-lg">Button</Button>
-    </div>
+    <AuthLayout>
+      <Login />
+    </AuthLayout>
   );
 }
 
