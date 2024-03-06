@@ -16,6 +16,7 @@ import { useTransition } from "react";
 import Header from "@/components/Header";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import Social from "@/components/Social";
 
 interface ILoginForm {
   email: string;
@@ -136,13 +137,14 @@ const Login = () => {
           Sign up
         </Link>
       </p>
-      <div className="flex items-center w-full">
+      <div className="flex items-center w-full py-4">
         <hr className="w-1/2" />
         <p className="text-base text-gray-400 whitespace-nowrap px-4">
           Or Login with
         </p>
         <hr className="w-1/2" />
       </div>
+      <Social />
     </section>
   );
 };
