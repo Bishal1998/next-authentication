@@ -13,10 +13,8 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useState, useTransition } from "react";
-import Link from "next/link";
 import Header from "@/components/Header";
 import AuthLayout from "../authLayout";
-import { IoIosArrowBack } from "react-icons/io";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 interface ICreatePass {
@@ -46,7 +44,7 @@ const createPassSchema = z
     message: "Passwords does not match",
   });
 
-const page = () => {
+const CreatePass = () => {
   const [isPending, startTransition] = useTransition();
   const [passActive, setPassActive] = useState(false);
   const [confirmActive, setConfirmActive] = useState(false);
@@ -160,4 +158,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CreatePass;
