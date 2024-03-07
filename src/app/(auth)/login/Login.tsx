@@ -156,7 +156,7 @@ const Login = () => {
         </form>
       </Form>
       <p className="text-center py-4">
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link href={"/register"} className="text-red-400">
           Register
         </Link>
