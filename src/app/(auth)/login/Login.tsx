@@ -53,6 +53,9 @@ const Login = () => {
   });
   const onSubmit = (data: ILoginForm) => {
     startTransition(() => {
+      if (!data.remember) {
+        return;
+      }
       console.log(data);
     });
   };
@@ -146,14 +149,14 @@ const Login = () => {
             className="bg-[#515def] text-white w-full py-6"
             disabled={isPending}
           >
-            Submit
+            Login
           </Button>
         </form>
       </Form>
       <p className="text-center py-4">
         Don't have an account?{" "}
         <Link href={"/register"} className="text-red-400">
-          Sign up
+          Register
         </Link>
       </p>
       <div className="flex items-center w-full py-4">
