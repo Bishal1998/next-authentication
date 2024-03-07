@@ -142,7 +142,9 @@ const Login = () => {
               />
               <p className="text-gray-600">Remember Me</p>
             </div>
-            <p className="text-red-600 cursor-pointer">Forgot Password?</p>
+            <Link href={"/reset"} className="text-red-600 cursor-pointer">
+              Forgot Password?
+            </Link>
           </div>
           <Button
             type="submit"
