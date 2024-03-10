@@ -267,7 +267,6 @@ const Register = () => {
                 <span className="text-red-400"> Privacy Policies.</span>
               </p>
             </div>
-            <p className="text-red-600 cursor-pointer">Forgot Password?</p>
           </div>
           <Button
             type="submit"
