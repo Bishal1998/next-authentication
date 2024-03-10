@@ -40,11 +40,14 @@ const POST = async (req: Request, res: Response) => {
       password: hashedPassword,
     });
     await user.save();
+
+    const { password: pass, ...item } = user._doc;
+
     return NextResponse.json(
       {
         success: true,
         message: "User created successfully",
-        user,
+        item,
       },
       { status: 201 }
     );
