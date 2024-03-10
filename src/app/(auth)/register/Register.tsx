@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormMessage,
@@ -23,7 +22,7 @@ interface IRegisterForm {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  phoneNumber: string;
   password: string;
   confirmPassword: string;
   agree: boolean;
@@ -38,7 +37,7 @@ const registerSchema = z
       .string()
       .min(3, { message: "First Name must have at least 3 characters" }),
     email: z.string().email({ message: "Invalid email address" }),
-    phone: z.string().min(10, { message: "Invalid phone number" }),
+    phoneNumber: z.string().min(10, { message: "Invalid phone number" }),
     password: z
       .string()
       .min(8, { message: "Password must be at least 8 characters long" })
@@ -70,19 +69,31 @@ const Register = () => {
       firstName: "",
       lastName: "",
       email: "",
-      phone: "",
+      phoneNumber: "",
       password: "",
       confirmPassword: "",
       agree: false,
     },
   });
   const onSubmit = (data: IRegisterForm) => {
-    startTransition(() => {
+    startTransition(async () => {
       if (!data.agree) {
         return;
       }
 
-      console.log(data);
+      try {
+        const res = await fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        registerForm.reset();
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
     });
   };
 
@@ -156,7 +167,7 @@ const Register = () => {
             />
             <FormField
               control={registerForm.control}
-              name="phone"
+              name="phoneNumber"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
